@@ -29,11 +29,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     //4在内存中配置两个用户 wyf 和 wisely ,密码和用户名一致,角色是 USER
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-    		auth
+    		/*auth
                 .inMemoryAuthentication()
                 .withUser("admin").password("admin").roles("USER")
                 .and()
-                .withUser("abel").password("abel").roles("USER");
+                .withUser("abel").password("abel").roles("USER");*/
+        auth
+                .inMemoryAuthentication()
+                .withUser("wyf").password("wyf").roles("USER")
+                .and()
+                .withUser("wisely").password("wisely").roles("USER");
     }
     //5忽略静态资源的拦截
     @Override
