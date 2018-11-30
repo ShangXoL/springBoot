@@ -16,5 +16,4 @@ public class Application {
     public static void main(String[] args) {
         ConfigurableApplicationContext run = run(Application.class, args);
     }
-
 }

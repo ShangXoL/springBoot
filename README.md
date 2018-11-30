@@ -1,5 +1,7 @@
 ## springboot-SpringSecurity0  
 
+* springSecurity入门资料：https://www.jianshu.com/p/76bfa6743ba9
+
 包含两部分代码：
 
 * 第一是  博客 springboot+mybatis＋SpringSecurity 实现用户角色数据库管理   地址：http://blog.csdn.net/u012373815/article/details/54632176

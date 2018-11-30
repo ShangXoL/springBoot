@@ -35,6 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        //使用and（）方法分割、除过css资源，其他访问需要登录
         http.authorizeRequests()
                 .antMatchers("/css/**").permitAll()
                 .anyRequest().authenticated() //任何请求,登录后可以访问

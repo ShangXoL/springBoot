@@ -21,26 +21,28 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
-    UserDetailsService customUserService(){ //注册UserDetailsService 的bean
+    UserDetailsService customUserService() { //注册UserDetailsService 的bean
         return new CustomUserService();
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(customUserService()).passwordEncoder(new PasswordEncoder(){
+        //密码加密处理
+        auth.userDetailsService(customUserService()).passwordEncoder(new PasswordEncoder() {
 
             @Override
             public String encode(CharSequence rawPassword) {
-                return MD5Util.encode((String)rawPassword);
+                return MD5Util.encode((String) rawPassword);
             }
 
             @Override
             public boolean matches(CharSequence rawPassword, String encodedPassword) {
-                return encodedPassword.equals(MD5Util.encode((String)rawPassword));
-            }}); //user Details Service验证
+                return encodedPassword.equals(MD5Util.encode((String) rawPassword));
+            }
+        }); //user Details Service验证
     }
 
-    @Override
+    @Override  //通过重载，配置如何通过拦截器保护请求
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .anyRequest().authenticated() //任何请求,登录后可以访问
@@ -54,7 +56,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
     }
-
 
 
 }
